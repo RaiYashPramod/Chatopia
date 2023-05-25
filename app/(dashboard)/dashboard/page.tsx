@@ -1,11 +1,12 @@
 import Button from '@/components/ui/Button'
+import { authOptions } from '@/lib/auth'
 import { FC } from 'react'
 
-interface pageProps {
-  
-}
 
-const page: FC<pageProps> = ({}) => {
+const page = async ({}) => {
+
+  const session = await getServerSession(authOptions)
+
   return <Button>page</Button>
 }
 
