@@ -79,7 +79,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
             <p className="text-lg font-medium">{request.senderEmail}</p>
             <button
               onClick={() => acceptFriend(request.senderId)}
-              aria-aria-label="accept request"
+              aria-label="accept-request"
               className="w-8 h-8 bg-indigo-600 hover:bg-indigo-700 grid place-items-center rounded-full transition hover:shadow-md"
             >
               <Check className="font-semibold text-white w-3/4 h-3/4" />
@@ -87,7 +87,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
 
             <button
               onClick={() => denyFriend(request.senderId)}
-              aria-aria-label="deny request"
+              aria-label="deny-request"
               className="w-8 h-8 bg-red-600 hover:bg-red-700 grid place-items-center rounded-full transition hover:shadow-md"
             >
               <X className="font-semibold text-white w-3/4 h-3/4" />

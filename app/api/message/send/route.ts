@@ -51,7 +51,21 @@ export async function POST(req: Request) {
     const message = messageValidator.parse(messageDate);
 
     //notify client about message
-    await pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message)
+    await pusherServer.trigger(
+      toPusherKey(`chat:${chatId}`),
+      "incoming-message",
+      message
+    );
+
+    await pusherServer.trigger(
+      toPusherKey(`user:${friendId}:chats`),
+      "new_message",
+      {
+        ...message,
+        senderImg: sender.image,
+        senderName: sender.name,
+      }
+    );
 
     await db.zadd(`chat:${chatId}:messages`, {
       score: timestamp,

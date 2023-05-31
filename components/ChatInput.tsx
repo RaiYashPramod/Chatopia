@@ -14,7 +14,7 @@ interface ChatInputProps {
 const ChatInput: FC<ChatInputProps> = ({chatPartner, chatId}) => {
   const [input, setInput] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const textareaRef = useRef<HTMLDivElement | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const sendMessage = async () => {
     if(!input) return

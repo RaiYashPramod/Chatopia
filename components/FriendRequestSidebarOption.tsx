@@ -34,7 +34,7 @@ const FriendRequestSidebarOption: FC<FriendRequestSidebarOptionProps> = ({sessio
       );
       pusherClient.unbind("incoming_friend_request", friendRequestHandler);
     };
-  }, []);
+  }, [sessionId]);
 
   
   return <Link href='/dashboard/requests' className='text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'>
