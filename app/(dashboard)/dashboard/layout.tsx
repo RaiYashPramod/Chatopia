@@ -10,16 +10,11 @@ import FriendRequestSidebarOption from "@/components/FriendRequestSidebarOption"
 import { fetchRedis } from "@/helpers/redis";
 import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
 import SidebarChatList from "@/components/SidebarChatList";
+import MobileChatLayout from "@/components/MobileChatLayout";
+import { sidebarOptions } from "@/types/typings";
 
 interface LayoutProps {
   children: ReactNode;
-}
-
-interface sidebarOptions {
-  id: number;
-  name: string;
-  href: string;
-  Icon: Icon;
 }
 
 const sidebarOptions: sidebarOptions[] = [
@@ -47,7 +42,15 @@ const Layout = async ({ children }: LayoutProps) => {
 
   return (
     <div className="w-full flex h-screen">
-      <div className="flex w-full h-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+      <div className="md:hidden">
+        <MobileChatLayout
+          friends={friends}
+          session={session}
+          sidebarOptions={sidebarOptions}
+          unseenRequestCount={unSeenRequestCount}
+        />
+      </div>
+      <div className="hidden md:flex w-full h-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
         <Link href="/dashboard" className="flex h-16 shrink-0 items-center">
           <Icons.Logo className="h-8 w-auto text-indigo-600" />
         </Link>
@@ -119,7 +122,9 @@ const Layout = async ({ children }: LayoutProps) => {
           </ul>
         </nav>
       </div>
-      <aside className='max-h-screen container py-16 md:py-12 w-full '>{children}</aside>
+      <aside className="max-h-screen container py-16 md:py-12 w-full ">
+        {children}
+      </aside>
     </div>
   );
 };
