@@ -37,4 +37,5 @@ export default withAuth(async function middleware(req) {
 
 export const config = {
   matcher: ["/", "/login", "/dashboard/:path*"],
+  debugger: true
 };
