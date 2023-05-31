@@ -59,11 +59,10 @@ export const authOptions: NextAuthOptions = {
         session.user.email = token.email,
         session.user.image = token.picture
       }
-
       return session
     },
     redirect () {
-      return '/dashboard'
+      return 'https://chatopia-peach.vercel.app/dashboard'
     },
   }, 
 }
