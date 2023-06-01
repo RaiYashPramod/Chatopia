@@ -62,7 +62,7 @@ export const authOptions: NextAuthOptions = {
       return session
     },
     redirect () {
-      return 'https://chatopia-peach.vercel.app/dashboard'
+      return process.env.NEXTAUTH_URL+'/dashboard'
     },
   }, 
 }
