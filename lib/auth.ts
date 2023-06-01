@@ -4,7 +4,6 @@ import { db } from "./db";
 import GoogleProvider from 'next-auth/providers/google'
 import { fetchRedis } from "@/helpers/redis";
 
-
 function getGoogleCredentials() {
   const clientId = process.env.GOOGLE_CLIENT_ID
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET
@@ -62,7 +61,7 @@ export const authOptions: NextAuthOptions = {
       return session
     },
     redirect () {
-      return process.env.NEXTAUTH_URL+'/dashboard'
+      return '/dashboard'
     },
   }, 
 }
