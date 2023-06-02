@@ -12,6 +12,7 @@ import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
 import SidebarChatList from "@/components/SidebarChatList";
 import MobileChatLayout from "@/components/MobileChatLayout";
 import { sidebarOptions } from "@/types/typings";
+import SettingsButton from "@/components/SettingsButton";
 
 interface LayoutProps {
   children: ReactNode;
@@ -93,6 +94,9 @@ const Layout = async ({ children }: LayoutProps) => {
                     sessionId={session.user.id}
                     initialUnseenRequestCount={unSeenRequestCount}
                   />
+                </li>
+                <li>
+                  <SettingsButton />
                 </li>
               </ul>
             </li>
