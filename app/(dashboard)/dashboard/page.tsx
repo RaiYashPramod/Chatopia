@@ -23,7 +23,11 @@ const page = async ({}) => {
         -1
       )) as string[]
 
+      console.log(lastMessageRaw);
+
       const lastMessage = JSON.parse(lastMessageRaw) as Message
+
+      console.log(lastMessage)
 
       return {
         ...friend,

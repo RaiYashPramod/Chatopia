@@ -84,8 +84,8 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
 
         return (
           <li key={friend.id}>
-            <div className="flex flex-1 items-center gap-x-2 text-sm font-semibold text-gray-900">
-              <div className="relative h-8 w-8 bg-gray-50">
+            <div className="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+              <div className="relative h-8 w-8 bg-gray-50">      
                 <Image
                   fill
                   referrerPolicy="no-referrer"
@@ -99,7 +99,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
                   sessionId,
                   friend.id
                 )}`}
-                className="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                // className="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
               >
                 {friend.name}
                 {unseenMessagesCount > 0 ? (
