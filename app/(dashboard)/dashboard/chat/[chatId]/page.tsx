@@ -4,6 +4,7 @@ import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { messageArrayValidator } from "@/lib/validations/message";
+import { Delete, Menu, Trash } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -55,9 +56,12 @@ const page = async ({ params }: pageProps) => {
 
   const chatPartnerId = user.id === userId1 ? userId2 : userId1;
   // const chatPartner = (await db.get(`user:${chatPartnerId}`)) as User;
-  const chatPatnerRaw = await fetchRedis('get', `user:${chatPartnerId}`) as string
+  const chatPatnerRaw = (await fetchRedis(
+    "get",
+    `user:${chatPartnerId}`
+  )) as string;
 
-  const chatPartner = JSON.parse(chatPatnerRaw) as User
+  const chatPartner = JSON.parse(chatPatnerRaw) as User;
 
   const initialMessages = await getChatMessages(chatId);
 
