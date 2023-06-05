@@ -26,6 +26,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
+    error: '/error='
   },
   providers: [
     GoogleProvider({
@@ -62,8 +63,8 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
-    redirect() {
-      return '/dashboard';
-    },
+    // redirect() {
+    //   return '/dashboard';
+    // },
   },
 };
