@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
-    error: '/error='
+    error: "/error=",
   },
   providers: [
     GoogleProvider({
@@ -41,7 +41,9 @@ export const authOptions: NextAuthOptions = {
         | null;
 
       if (!dbUserResult) {
-        token.id = user!.id;
+        if (user) {
+          token.id = user!.id;
+        }
         return token;
       }
 
@@ -57,15 +59,14 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       if (token) {
         (session.user.id = token.id),
-        (session.user.name = token.name),
-        (session.user.email = token.email),
-        (session.user.image = token.picture);
+          (session.user.name = token.name),
+          (session.user.email = token.email),
+          (session.user.image = token.picture);
       }
       return session;
     },
     redirect() {
-      return '/dashboard';
+      return "/dashboard";
     },
   },
-  
 };
